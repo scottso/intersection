@@ -5,9 +5,11 @@ import (
 	"math/rand"
 	"sort"
 	"time"
+
+	"golang.org/x/exp/constraints"
 )
 
-func SortedIntersection(a, b []int) (c []int) {
+func SortedIntersection[T constraints.Ordered](a, b []T) (c []T) {
 	var a_ptr, b_ptr int
 
 	for a_ptr < len(a) && b_ptr < len(b) {
@@ -27,8 +29,8 @@ func SortedIntersection(a, b []int) (c []int) {
 }
 
 // Doesn't care if they're sorted
-func Intersection(a, b []int) (c []int) {
-	m := make(map[int]bool)
+func Intersection[T constraints.Ordered](a, b []T) (c []T) {
+	m := make(map[T]bool)
 
 	for _, elem := range a {
 		m[elem] = true

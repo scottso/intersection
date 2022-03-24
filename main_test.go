@@ -18,11 +18,11 @@ func BenchmarkSortedIntersection(b *testing.B) {
 		y = append(x, rand.Intn(100))
 	}
 
-	b.ReportAllocs()
-	b.ResetTimer()
-
 	sort.Ints(x)
 	sort.Ints(y)
+
+	b.ReportAllocs()
+	b.ResetTimer()
 
 	_ = SortedIntersection(x, y)
 }
